@@ -15,8 +15,8 @@ public class ComicsService {
 
 	private static final ContentType DEFAULT_CONTENT_TYPE = ContentType.PNG;
 
-	private ComicsRepository repository;
-	private HttpService httpService;
+	private final ComicsRepository repository;
+	private final HttpService httpService;
 
 	public ComicsService(ComicsRepository repository, HttpService httpService) {
 		this.repository = repository;
@@ -37,16 +37,20 @@ public class ComicsService {
 	}
 
 	private FileDownload downloadComic(Comic comic) throws IOException {
+		String imageUrl = getComicImageUrl(comic);
+		byte[] imageContent = httpService.download(imageUrl);
+		ContentType contentType = getContentTypeByUrl(imageUrl);
+		return new FileDownload(comic.getName(), imageContent, contentType);
+	}
+
+	private String getComicImageUrl(Comic comic) throws IOException {
 		BufferedReader webpageReader = httpService.read(comic.getUrl());
 		String currentLine;
 		while ((currentLine = webpageReader.readLine()) != null) {
 			Pattern pattern = Pattern.compile(comic.getRegexp());
 			Matcher matcher = pattern.matcher(currentLine);
 			if (matcher.find()) {
-				String imageUrl = matcher.group(1);
-				byte[] imageContent = httpService.download(imageUrl);
-				ContentType contentType = getContentTypeByUrl(imageUrl);
-				return new FileDownload(comic.getName(), imageContent, contentType);
+				return matcher.group(1);
 			}
 		}
 		throw new RuntimeException("No comic found");
