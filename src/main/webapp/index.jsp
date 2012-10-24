@@ -1,5 +1,7 @@
 <html>
-<body>
-<h2>Hello World!</h2>
-</body>
+	<body>
+		<h2>Comics</h2>
+
+		List of comics.
+	</body>
 </html>
