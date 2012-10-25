@@ -1,1 +1,4 @@
-java -jar target/dependency/jetty-runner.jar target/*.war
+#!/bin/bash
+
+PORT=8080
+eval $(sed 's/^web://' Procfile)
