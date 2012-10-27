@@ -1,15 +1,17 @@
 package mdettlaff.comics.domain;
 
+import java.util.regex.Pattern;
+
 public class Comic {
 
 	private final String name;
 	private final String url;
-	private final String regexp;
+	private final Pattern imageUrlPattern;
 
-	public Comic(String name, String url, String regexp) {
+	public Comic(String name, String url, String imageUrlPattern) {
 		this.name = name;
 		this.url = url;
-		this.regexp = regexp;
+		this.imageUrlPattern = Pattern.compile(imageUrlPattern);
 	}
 
 	public String getName() {
@@ -20,7 +22,7 @@ public class Comic {
 		return url;
 	}
 
-	public String getRegexp() {
-		return regexp;
+	public Pattern getImageUrlPattern() {
+		return imageUrlPattern;
 	}
 }

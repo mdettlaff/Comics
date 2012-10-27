@@ -13,8 +13,8 @@ public class ComicsRepository {
 
 	public List<Comic> getAllKnownComics() {
 		List<Comic> comics = new ArrayList<Comic>();
-		comics.add(new Comic("Dilbert", "http://www.dilbert.com/fast/", "'<img src=\"(.*?)\" />"));
-		comics.add(new Comic("xkcd", "http://xkcd.com/", ".*embedding\\): (.*?)$"));
+		comics.add(new Comic("Dilbert", "http://www.dilbert.com/fast/", "^<img src=\"(.*?)\" />"));
+		comics.add(new Comic("xkcd", "http://xkcd.com/", "embedding\\): (.*?)$"));
 		return comics;
 	}
 

@@ -27,6 +27,6 @@ public enum ContentType {
 				return contentType;
 			}
 		}
-		throw new RuntimeException("No content type for file extension: " + extension);
+		throw new IllegalArgumentException("No content type for file extension: " + extension);
 	}
 }
