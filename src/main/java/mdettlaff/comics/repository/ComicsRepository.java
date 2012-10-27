@@ -33,6 +33,7 @@ public class ComicsRepository {
 		comics.add(new Comic("Nedroid", "http://www.nedroid.com", "<img src=\"(.*?nedroid.com/comics.*?)\""));
 		comics.add(new Comic("FLOABC", "http://www.forlackofabettercomic.com", "<img src=\"(.*?img/comic.*?)\""));
 		comics.add(new Comic("Sequential Art", "http://www.collectedcurios.com/sequentialart.php", "<img id=\"strip\" src=\"(.*?)\""));
+		comics.add(new Comic("Liberty Meadows", "http://www.creators.com/today-comics.html", "liberty-meadows.*<img src=\"(.*?)\""));
 		comics.add(createGoComicsComic("Garfield", "garfield"));
 		comics.add(createGoComicsComic("Monty", "monty"));
 		comics.add(createGoComicsComic("Pearls Before Swine", "pearlsbeforeswine"));
