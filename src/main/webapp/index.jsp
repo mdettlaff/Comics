@@ -14,13 +14,20 @@
 		</style>
 	</head>
 	<body>
+<%
+ComicsRepository repository = new ComicsRepository();
+if (repository.getDownloads().isEmpty()) {
+%>
+		<div>No comics found.</div>
+<%
+} else {
+%>
 		<div>
 <%
-int index = 0;
-if (request.getParameter("index") != null) {
-	index = Integer.parseInt(request.getParameter("index"));
-}
-ComicsRepository repository = new ComicsRepository();
+	int index = 0;
+	if (request.getParameter("index") != null) {
+		index = Integer.parseInt(request.getParameter("index"));
+	}
 %>
 			<a href="/?index=<%=Math.min(index + 1, repository.getDownloads().size() - 1)%>">
 				<img src="/image?index=<%=index%>" border="0" />
@@ -28,8 +35,8 @@ ComicsRepository repository = new ComicsRepository();
 		</div>
 		<div>
 <%
-for (int i = 0; i < repository.getDownloads().size(); i++) {
-	FileDownload download = repository.getDownloads().get(i);
+	for (int i = 0; i < repository.getDownloads().size(); i++) {
+		FileDownload download = repository.getDownloads().get(i);
 %>
 			<%=i + 1%>
 			<a href="/?index=<%=i%>">
@@ -38,10 +45,11 @@ for (int i = 0; i < repository.getDownloads().size(); i++) {
 			<%=new SimpleDateFormat("yyyy-MM-dd HH:mm").format(download.getCreationTime())%>
 			<br>
 <%
-}
+	}
 %>
 		</div>
 <%
+}
 if (repository.getErrors().isEmpty()) {
 %>
 		<div>
