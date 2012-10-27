@@ -39,9 +39,9 @@ if (repository.getDownloads().isEmpty()) {
 		FileDownload download = repository.getDownloads().get(i);
 %>
 			<%=i + 1%>
-			<a href="/?index=<%=i%>">
-				<%=download.getName() + "." + download.getContentType().getFileExtension()%>
-			</a>
+			<a href="/?index=<%=i%>"><%=download.getName()%></a>
+			<%=download.getContentType().getFileExtension()%>
+			<%=download.getContent().length / 1000%>K
 			<%=new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(download.getCreationTime())%>
 			<br>
 <%
