@@ -42,7 +42,7 @@ if (repository.getDownloads().isEmpty()) {
 			<a href="/?index=<%=i%>">
 				<%=download.getName() + "." + download.getContentType().getFileExtension()%>
 			</a>
-			<%=new SimpleDateFormat("dd.MM.yyyy HH:mm").format(download.getCreationTime())%>
+			<%=new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(download.getCreationTime())%>
 			<br>
 <%
 	}
