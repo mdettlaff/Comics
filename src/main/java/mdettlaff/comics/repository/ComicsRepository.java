@@ -7,6 +7,9 @@ import java.util.List;
 import mdettlaff.comics.domain.Comic;
 import mdettlaff.comics.domain.FileDownload;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ComicsRepository {
 
 	private static List<FileDownload> downloads = new ArrayList<FileDownload>();

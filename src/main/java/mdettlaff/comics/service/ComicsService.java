@@ -11,6 +11,10 @@ import mdettlaff.comics.domain.FileDownload;
 import mdettlaff.comics.domain.exception.ComicNotFoundException;
 import mdettlaff.comics.repository.ComicsRepository;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class ComicsService {
 
 	private static final ContentType DEFAULT_CONTENT_TYPE = ContentType.PNG;
@@ -18,6 +22,7 @@ public class ComicsService {
 	private final ComicsRepository repository;
 	private final HttpServiceFactory httpServiceFactory;
 
+	@Autowired
 	public ComicsService(ComicsRepository repository, HttpServiceFactory httpServiceFactory) {
 		this.repository = repository;
 		this.httpServiceFactory = httpServiceFactory;
@@ -36,6 +41,14 @@ public class ComicsService {
 						comic.getName(), e.getClass().getSimpleName(), e.getMessage()));
 			}
 		}
+	}
+
+	public List<FileDownload> getImages() {
+		return repository.getDownloads();
+	}
+
+	public List<String> getErrors() {
+		return repository.getErrors();
 	}
 
 	private FileDownload downloadComic(Comic comic) throws IOException, ComicNotFoundException {
