@@ -19,7 +19,9 @@ public class DownloadServlet extends HttpServlet {
 			HttpServiceFactory httpServiceFactory = new HttpServiceFactory();
 			ComicsService comicsService = new ComicsService(repository, httpServiceFactory);
 			comicsService.downloadComics();
-			response.getWriter().append("Download successful");
+			response.addHeader("Content-Type", "text/html");
+			response.getWriter().append("Download successful<br>");
+			response.getWriter().append("<a href=\"/\">See downloaded comics</a>");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
