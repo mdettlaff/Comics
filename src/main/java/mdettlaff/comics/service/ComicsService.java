@@ -31,6 +31,7 @@ public class ComicsService {
 				FileDownload download = downloadComic(comic);
 				repository.addDownload(download);
 			} catch (Exception e) {
+				e.printStackTrace();
 				repository.logError(String.format("%s: %s: %s",
 						comic.getName(), e.getClass().getSimpleName(), e.getMessage()));
 			}
