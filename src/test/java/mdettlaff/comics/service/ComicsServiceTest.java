@@ -73,9 +73,7 @@ public class ComicsServiceTest {
 		assertEquals("Dilbert", dilbertFileDownload.getName());
 		assertEquals("dilbert image", new String(dilbertFileDownload.getContent()));
 		assertEquals(ContentType.GIF, dilbertFileDownload.getContentType());
-		ArgumentCaptor<String> errorArgument = ArgumentCaptor.forClass(String.class);
-		verify(repository).logError(errorArgument.capture());
-		assertEquals(ERROR_MESSAGE, errorArgument.getValue());
+		verify(repository).logError(ERROR_MESSAGE);
 	}
 
 	private List<Comic> getComics() {
