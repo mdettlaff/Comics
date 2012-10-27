@@ -3,7 +3,8 @@ package mdettlaff.comics.domain;
 public enum ContentType {
 
 	PNG("image/png", "png"),
-	GIF("image/gif", "gif");
+	GIF("image/gif", "gif"),
+	JPG("image/jpeg", "jpg");
 
 	private final String mimeType;
 	private final String fileExtension;
@@ -23,7 +24,7 @@ public enum ContentType {
 
 	public static ContentType getByFileExtension(String extension) {
 		for (ContentType contentType : values()) {
-			if (contentType.getFileExtension().equals(extension)) {
+			if (contentType.getFileExtension().equalsIgnoreCase(extension)) {
 				return contentType;
 			}
 		}
