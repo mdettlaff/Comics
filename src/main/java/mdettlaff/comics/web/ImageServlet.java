@@ -19,6 +19,7 @@ public class ImageServlet extends HttpServlet {
 			int index = Integer.parseInt(request.getParameter("index"));
 			ComicsRepository repository = new ComicsRepository();
 			FileDownload image = repository.getDownloads().get(index);
+			response.addHeader("Content-Type", image.getContentType().getMimeType());
 			IOUtils.write(image.getContent(), response.getOutputStream());
 		} catch (IOException e) {
 			e.printStackTrace();
