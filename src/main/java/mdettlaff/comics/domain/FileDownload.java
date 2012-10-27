@@ -2,7 +2,7 @@ package mdettlaff.comics.domain;
 
 import java.util.Date;
 
-public class FileDownload {
+public class FileDownload implements Comparable<FileDownload> {
 
 	private final String name;
 	private final byte[] content;
@@ -30,5 +30,10 @@ public class FileDownload {
 
 	public Date getCreationTime() {
 		return creationTime;
+	}
+
+	@Override
+	public int compareTo(FileDownload other) {
+		return name.compareToIgnoreCase(other.name);
 	}
 }

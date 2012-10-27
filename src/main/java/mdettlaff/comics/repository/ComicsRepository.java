@@ -1,6 +1,7 @@
 package mdettlaff.comics.repository;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import mdettlaff.comics.domain.Comic;
@@ -28,7 +29,9 @@ public class ComicsRepository {
 	}
 
 	public List<FileDownload> getDownloads() {
-		return downloads;
+		List<FileDownload> sortedDownloads = new ArrayList<FileDownload>(downloads);
+		Collections.sort(sortedDownloads);
+		return sortedDownloads;
 	}
 
 	public void logError(String error) {
