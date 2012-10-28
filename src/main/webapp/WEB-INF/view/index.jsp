@@ -2,6 +2,8 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="mdettlaff.comics.domain.FileDownload"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -16,31 +18,19 @@
 </c:if>
 <c:if test="${not empty images}">
 		<div>
-<%
-	int index = 0;
-	if (request.getParameter("index") != null) {
-		index = Integer.parseInt(request.getParameter("index"));
-	}
-	List<FileDownload> images = (List<FileDownload>)request.getAttribute("images");
-%>
-			<a href="/?index=<%=Math.min(index + 1, images.size() - 1)%>">
-				<img src="/image/<%=index%>" border="0" />
+			<a href="/comic/${nextIndex}">
+				<img src="/image/${index}" border="0" />
 			</a>
 		</div>
 		<div>
-<%
-	for (int i = 0; i < images.size(); i++) {
-		FileDownload download = images.get(i);
-%>
-			<%=i + 1%>
-			<a href="/?index=<%=i%>"><%=download.getName()%></a>
-			<%=download.getContentType().getFileExtension()%>
-			<%=download.getContent().length / 1000%>K
-			<%=new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(download.getCreationTime())%>
+	<c:forEach items="#{images}" var="image" varStatus="status">
+			${status.count}
+			<a href="/comic/${status.index}">${image.name}</a>
+			${image.contentType.fileExtension}
+			<fmt:formatNumber value="${fn:length(image.content) / 1000}" maxFractionDigits="0" />K
+			<fmt:formatDate value="${image.creationTime}" pattern="yyyy.MM.dd HH:mm:ss" />
 			<br>
-<%
-	}
-%>
+	</c:forEach>
 		</div>
 </c:if>
 

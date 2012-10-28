@@ -1,6 +1,7 @@
 package mdettlaff.comics.web;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import mdettlaff.comics.domain.FileDownload;
@@ -27,10 +28,25 @@ public class ComicsController {
 
 	@RequestMapping("")
 	public ModelAndView home() {
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("images", comicsService.getImages());
-		model.put("errors", comicsService.getErrors());
+		return comic(0);
+	}
+
+	@RequestMapping("/comic/{index}")
+	public ModelAndView comic(@PathVariable("index") int index) {
+		List<FileDownload> images = comicsService.getImages();
+		List<String> errors = comicsService.getErrors();
+		Map<String, Object> model = createComicModel(index, images, errors);
 		return new ModelAndView("index", model);
+	}
+
+	private Map<String, Object> createComicModel(
+			int index, List<FileDownload> images, List<String> errors) {
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("index", index);
+		model.put("nextIndex", Math.min(index + 1, images.size() - 1));
+		model.put("images", images);
+		model.put("errors", errors);
+		return model;
 	}
 
 	@RequestMapping("/download")
