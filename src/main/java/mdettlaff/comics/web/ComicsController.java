@@ -1,12 +1,16 @@
 package mdettlaff.comics.web;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
 import mdettlaff.comics.domain.FileDownload;
 import mdettlaff.comics.service.ComicsService;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -57,10 +61,9 @@ public class ComicsController {
 	}
 
 	@RequestMapping("/image/{index}")
-	public ResponseEntity<byte[]> image(@PathVariable("index") int index) {
+	public void image(@PathVariable("index") int index, HttpServletResponse response) throws IOException {
 		FileDownload image = comicsService.getImages().get(index - 1);
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(image.getContentType().getMediaType());
-		return new ResponseEntity<byte[]>(image.getContent(), headers, HttpStatus.OK);
+		response.addHeader("Content-Type", image.getContentType().getMediaType().toString());
+		IOUtils.write(image.getContent(), response.getOutputStream());
 	}
 }
