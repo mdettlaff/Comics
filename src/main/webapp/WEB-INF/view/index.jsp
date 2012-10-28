@@ -29,7 +29,7 @@
 	List<FileDownload> images = (List<FileDownload>)request.getAttribute("images");
 %>
 			<a href="/?index=<%=Math.min(index + 1, images.size() - 1)%>">
-				<img src="/image?index=<%=index%>" border="0" />
+				<img src="/image/<%=index%>" border="0" />
 			</a>
 		</div>
 		<div>

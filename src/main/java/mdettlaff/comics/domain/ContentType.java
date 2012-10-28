@@ -1,21 +1,23 @@
 package mdettlaff.comics.domain;
 
+import org.springframework.http.MediaType;
+
 public enum ContentType {
 
-	PNG("image/png", "png"),
-	GIF("image/gif", "gif"),
-	JPG("image/jpeg", "jpg");
+	PNG(MediaType.IMAGE_PNG, "png"),
+	GIF(MediaType.IMAGE_GIF, "gif"),
+	JPG(MediaType.IMAGE_JPEG, "jpg");
 
-	private final String mimeType;
+	private final MediaType mediaType;
 	private final String fileExtension;
 
-	private ContentType(String mimeType, String fileExtension) {
-		this.mimeType = mimeType;
+	private ContentType(MediaType mediaType, String fileExtension) {
+		this.mediaType = mediaType;
 		this.fileExtension = fileExtension;
 	}
 
-	public String getMimeType() {
-		return mimeType;
+	public MediaType getMediaType() {
+		return mediaType;
 	}
 
 	public String getFileExtension() {
