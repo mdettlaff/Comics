@@ -23,7 +23,7 @@
 			</a>
 		</div>
 		<div>
-	<c:forEach items="#{images}" var="image" varStatus="status">
+	<c:forEach items="${images}" var="image" varStatus="status">
 			${status.count}
 			<a href="/comic/${status.count}">${image.name}</a>
 			${image.contentType.fileExtension}
@@ -41,7 +41,7 @@
 </c:if>
 <c:if test="${not empty errors}">
 		<div class="error">
-	<c:forEach items="#{errors}" var="error">
+	<c:forEach items="${errors}" var="error">
 			Error: ${error}<br>
 	</c:forEach>
 		</div>

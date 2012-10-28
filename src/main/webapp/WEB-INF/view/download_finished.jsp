@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>Comics download</title>
-		<link rel="stylesheet" href="/resources/style.css" type="text/css" />
+		<link rel="stylesheet" href="/resources/style.css" type="text/css">
 	</head>
 	<body>
 		Download successful<br>
