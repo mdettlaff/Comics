@@ -61,6 +61,6 @@ public class ComicsController {
 		FileDownload image = comicsService.getImages().get(index - 1);
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(image.getContentType().getMediaType());
-		return new ResponseEntity<byte[]>(image.getContent(), headers, HttpStatus.CREATED);
+		return new ResponseEntity<byte[]>(image.getContent(), headers, HttpStatus.OK);
 	}
 }
