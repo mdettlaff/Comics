@@ -9,7 +9,7 @@
 <html>
 	<head>
 		<title>Comics</title>
-		<link rel="stylesheet" href="/resources/style.css" type="text/css" />
+		<link rel="stylesheet" href="/resources/style.css" type="text/css">
 	</head>
 	<body>
 
@@ -19,7 +19,7 @@
 <c:if test="${not empty images}">
 		<div>
 			<a href="/comic/${nextComicIndex}">
-				<img src="/image/${comicIndex}" border="0" />
+				<img src="/image/${comicIndex}" border="0">
 			</a>
 		</div>
 		<div>
@@ -47,9 +47,9 @@
 		</div>
 </c:if>
 
-		<div>
-			<a href="/download">Download comics now</a>
-		</div>
+		<form action="/download" method="post">
+			<input type="submit" value="Download comics now">
+		</form>
 
 	</body>
 </html>

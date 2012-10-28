@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -49,7 +50,7 @@ public class ComicsController {
 		return model;
 	}
 
-	@RequestMapping("/download")
+	@RequestMapping(value = "/download", method = RequestMethod.POST)
 	public String download() {
 		comicsService.downloadComics();
 		return "download_finished";
