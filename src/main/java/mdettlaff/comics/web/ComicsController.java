@@ -50,7 +50,7 @@ public class ComicsController {
 		return model;
 	}
 
-	@RequestMapping(value = "/download", method = RequestMethod.POST)
+	@RequestMapping(value = "/download", method = {RequestMethod.POST, RequestMethod.GET})
 	public String download() {
 		comicsService.downloadComics();
 		return "download_finished";
