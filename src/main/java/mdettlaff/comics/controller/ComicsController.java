@@ -1,4 +1,4 @@
-package mdettlaff.comics.web;
+package mdettlaff.comics.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
