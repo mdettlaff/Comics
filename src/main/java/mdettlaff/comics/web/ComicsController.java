@@ -42,8 +42,8 @@ public class ComicsController {
 	private Map<String, Object> createComicModel(
 			int index, List<FileDownload> images, List<String> errors) {
 		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("index", index);
-		model.put("nextIndex", Math.min(index + 1, images.size()));
+		model.put("comicIndex", index);
+		model.put("nextComicIndex", Math.min(index + 1, images.size()));
 		model.put("images", images);
 		model.put("errors", errors);
 		return model;

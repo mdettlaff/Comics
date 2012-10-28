@@ -18,8 +18,8 @@
 </c:if>
 <c:if test="${not empty images}">
 		<div>
-			<a href="/comic/${nextIndex}">
-				<img src="/image/${index}" border="0" />
+			<a href="/comic/${nextComicIndex}">
+				<img src="/image/${comicIndex}" border="0" />
 			</a>
 		</div>
 		<div>
