@@ -28,7 +28,7 @@ public class ComicsController {
 
 	@RequestMapping("")
 	public ModelAndView home() {
-		return comic(0);
+		return comic(1);
 	}
 
 	@RequestMapping("/comic/{index}")
@@ -43,7 +43,7 @@ public class ComicsController {
 			int index, List<FileDownload> images, List<String> errors) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("index", index);
-		model.put("nextIndex", Math.min(index + 1, images.size() - 1));
+		model.put("nextIndex", Math.min(index + 1, images.size()));
 		model.put("images", images);
 		model.put("errors", errors);
 		return model;
@@ -57,7 +57,7 @@ public class ComicsController {
 
 	@RequestMapping("/image/{index}")
 	public ResponseEntity<byte[]> image(@PathVariable("index") int index) {
-		FileDownload image = comicsService.getImages().get(index);
+		FileDownload image = comicsService.getImages().get(index - 1);
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(image.getContentType().getMediaType());
 		return new ResponseEntity<byte[]>(image.getContent(), headers, HttpStatus.CREATED);

@@ -25,7 +25,7 @@
 		<div>
 	<c:forEach items="#{images}" var="image" varStatus="status">
 			${status.count}
-			<a href="/comic/${status.index}">${image.name}</a>
+			<a href="/comic/${status.count}">${image.name}</a>
 			${image.contentType.fileExtension}
 			<fmt:formatNumber value="${fn:length(image.content) / 1000}" maxFractionDigits="0" />K
 			<fmt:formatDate value="${image.creationTime}" pattern="yyyy.MM.dd HH:mm:ss" />
