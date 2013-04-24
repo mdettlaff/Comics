@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
@@ -21,7 +23,7 @@ public class HttpService {
 		client = new DefaultHttpClient();
 	}
 
-	public BufferedReader read(String url) throws ClientProtocolException, IOException {
+	public BufferedReader read(String url) throws ClientProtocolException, IOException, URISyntaxException {
 		InputStream stream = getEntity(url).getContent();
 		return new BufferedReader(new InputStreamReader(stream));
 	}
@@ -31,7 +33,7 @@ public class HttpService {
 		client.getConnectionManager().shutdown();
 	}
 
-	public byte[] download(String url) throws ClientProtocolException, IOException {
+	public byte[] download(String url) throws ClientProtocolException, IOException, URISyntaxException {
 		try {
 			return EntityUtils.toByteArray(getEntity(url));
 		} finally {
@@ -39,7 +41,7 @@ public class HttpService {
 		}
 	}
 
-	private HttpEntity getEntity(String url) throws IOException, ClientProtocolException {
-		return client.execute(new HttpGet(url)).getEntity();
+	private HttpEntity getEntity(String url) throws IOException, ClientProtocolException, URISyntaxException {
+		return client.execute(new HttpGet(new URI(url))).getEntity();
 	}
 }

@@ -2,6 +2,7 @@ package mdettlaff.comics.service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.List;
 import java.util.regex.Matcher;
 
@@ -51,14 +52,14 @@ public class ComicsService {
 		return repository.getErrors();
 	}
 
-	private FileDownload downloadComic(Comic comic) throws IOException, ComicNotFoundException {
+	private FileDownload downloadComic(Comic comic) throws IOException, ComicNotFoundException, URISyntaxException {
 		String imageUrl = getComicImageUrl(comic);
 		byte[] imageContent = httpServiceFactory.getInstance().download(imageUrl);
 		ContentType contentType = getContentTypeByUrl(imageUrl);
 		return new FileDownload(comic.getName(), imageContent, contentType);
 	}
 
-	private String getComicImageUrl(Comic comic) throws IOException, ComicNotFoundException {
+	private String getComicImageUrl(Comic comic) throws IOException, ComicNotFoundException, URISyntaxException {
 		HttpService httpService = httpServiceFactory.getInstance();
 		BufferedReader webpageReader = httpService.read(comic.getUrl());
 		try {
