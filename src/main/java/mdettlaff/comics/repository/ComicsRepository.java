@@ -46,6 +46,7 @@ public class ComicsRepository {
 		comics.add(createGoComicsComic("Daddy's Home", "daddyshome"));
 		comics.add(createGoComicsComic("Cafe con Leche", "cafeconleche"));
 		comics.add(createGoComicsComic("Calvin and Hobbes", "calvinandhobbes"));
+		Collections.sort(comics);
 		return comics;
 	}
 
@@ -63,9 +64,7 @@ public class ComicsRepository {
 	}
 
 	public List<FileDownload> getDownloads() {
-		List<FileDownload> sortedDownloads = new ArrayList<FileDownload>(downloads);
-		Collections.sort(sortedDownloads);
-		return sortedDownloads;
+		return downloads;
 	}
 
 	public void logError(String error) {

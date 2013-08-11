@@ -2,7 +2,7 @@ package mdettlaff.comics.domain;
 
 import java.util.regex.Pattern;
 
-public class Comic {
+public class Comic implements Comparable<Comic> {
 
 	private final String name;
 	private final String url;
@@ -24,5 +24,10 @@ public class Comic {
 
 	public Pattern getImageUrlPattern() {
 		return imageUrlPattern;
+	}
+
+	@Override
+	public int compareTo(Comic other) {
+		return name.compareToIgnoreCase(other.name);
 	}
 }
