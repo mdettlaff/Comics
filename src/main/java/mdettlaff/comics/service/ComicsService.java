@@ -33,13 +33,17 @@ public class ComicsService {
 		List<Comic> comics = repository.getAllKnownComics();
 		repository.clear();
 		for (Comic comic : comics) {
+			System.out.println("Downloading comic: " + comic.getName());
 			try {
 				FileDownload download = downloadComic(comic);
 				repository.addDownload(download);
+				System.out.println("Downloaded comic: " + comic.getName() + " successfully");
 			} catch (Exception e) {
+				String errorMessage = String.format("%s: %s: %s",
+						comic.getName(), e.getClass().getSimpleName(), e.getMessage());
+				System.err.println("Error while downloading: " + errorMessage);
 				e.printStackTrace();
-				repository.logError(String.format("%s: %s: %s",
-						comic.getName(), e.getClass().getSimpleName(), e.getMessage()));
+				repository.logError(errorMessage);
 			}
 		}
 	}
