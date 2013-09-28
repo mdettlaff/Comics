@@ -32,7 +32,7 @@ public class ComicsRepository {
 		comics.add(new Comic("Dinosaur Comics", "http://qwantz.com/index.php", ".*<img src=\"(.*?)\" class=\"comic\""));
 		comics.add(new Comic("User Friendly", "http://userfriendly.org/", "<IMG ALT=\"Latest Strip\".*? SRC=\"(.*?)\""));
 		comics.add(new Comic("Cowbirds in Love", "http://cowbirdsinlove.com/", "<img src=\"(.*?)\".*id=\"comic\""));
-		comics.add(new Comic("Chainsawsuit", "http://www.chainsawsuit.com", "<div id=\"comic.*?<img src=\"(.*?)\""));
+		comics.add(new Comic("Chainsawsuit", "http://www.chainsawsuit.com", "<img src=\"(.*?uploads.*?)\""));
 		comics.add(new Comic("Nedroid", "http://www.nedroid.com", "<img src=\"(.*?nedroid.com/comics.*?)\""));
 		comics.add(new Comic("FLOABC", "http://www.forlackofabettercomic.com", "<img src=\"(.*?img/comic.*?)\""));
 		comics.add(new Comic("Sequential Art", "http://www.collectedcurios.com/sequentialart.php", "<img id=\"strip\" src=\"(.*?)\""));
