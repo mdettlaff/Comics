@@ -65,7 +65,7 @@ public class ComicsRepository {
 	}
 
 	public List<FileDownload> getDownloads() {
-		return downloads;
+		return new ArrayList<FileDownload>(downloads);
 	}
 
 	public void logError(String error) {
