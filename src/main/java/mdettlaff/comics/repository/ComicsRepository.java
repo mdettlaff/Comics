@@ -20,11 +20,11 @@ public class ComicsRepository {
 		comics.add(new Comic("Dilbert", "http://www.dilbert.com/fast/", "^<img src=\"(.*?)\" />"));
 		comics.add(new Comic("xkcd", "http://xkcd.com/", "embedding\\): (.*?)$"));
 		comics.add(new Comic("Not Invented Here", "http://notinventedhe.re/", "<img alt=\"Not Invented Here.*? src=\"(.*?)\""));
-		comics.add(new Comic("Sinfest", "http://sinfest.net/", "<img src=\"(.*?comikaze.*?)\""));
+		comics.add(new Comic("Sinfest", "http://sinfest.net/", "<img src=\"(.*?/comics/.*?)\""));
 		comics.add(new Comic("Freefall", "http://freefall.purrsia.com/", "<img src=\"(.*?)\""));
 		comics.add(new Comic("Questionable Content", "http://questionablecontent.net/", "<img src=\"(.*?/comics.*?)\">$"));
 		comics.add(new Comic("PHD Comics", "http://phdcomics.com/comics.php", "comic src=(.*?comics/archive/phd.*?) "));
-		comics.add(new Comic("Penny Arcade", "http://www.penny-arcade.com/comic/", "\\s+<img src=\"(http://art.*?)\""));
+		comics.add(new Comic("Penny Arcade", "http://www.penny-arcade.com/comic/", "<img src=\"(http://art.*?)\""));
 		comics.add(new Comic("Cyanide & Happiness", "http://explosm.net/comics/", ".*<img.*? src=\"(.*?net/db/files/Comics.*?)\""));
 		comics.add(new Comic("SMBC", "http://www.smbc-comics.com/", "\\s+<img src=\'(.*?comic.*?)\'>\\s+$"));
 		comics.add(new Comic("SMBC bonus", "http://www.smbc-comics.com/", "<img src=\'(.*?after.*?)\'>$"));
@@ -42,7 +42,6 @@ public class ComicsRepository {
 		comics.add(createGoComicsComic("Pearls Before Swine", "pearlsbeforeswine"));
 		comics.add(createGoComicsComic("Scary Gary", "scarygary"));
 		comics.add(createGoComicsComic("Meaning of Lila", "meaningoflila"));
-		comics.add(createGoComicsComic("On a Claire Day", "onaclaireday"));
 		comics.add(createGoComicsComic("Daddy's Home", "daddyshome"));
 		comics.add(createGoComicsComic("Cafe con Leche", "cafeconleche"));
 		comics.add(createGoComicsComic("Calvin and Hobbes", "calvinandhobbes"));
