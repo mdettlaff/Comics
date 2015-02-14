@@ -28,12 +28,10 @@ public class ComicsRepository {
 		comics.add(new Comic("Cyanide & Happiness", "http://explosm.net/comics/latest", ".*\"og:image\" content=\"(.*?/comics/.*?)\""));
 		comics.add(new Comic("SMBC", "http://www.smbc-comics.com/", "\\s+<img src=\'(.*?comic.*?)\'>\\s+$"));
 		comics.add(new Comic("SMBC bonus", "http://www.smbc-comics.com/", "<img src=\'(.*?after.*?)\'>$"));
-		comics.add(new Comic("Abstruse Goose", "http://abstrusegoose.com/", "<img.*? src=\"(.*?strips.*?)\""));
 		comics.add(new Comic("Dinosaur Comics", "http://qwantz.com/index.php", ".*<img src=\"(.*?)\" class=\"comic\""));
 		comics.add(new Comic("User Friendly", "http://userfriendly.org/", "<IMG ALT=\"Latest Strip\".*? SRC=\"(.*?)\""));
 		comics.add(new Comic("Chainsawsuit", "http://www.chainsawsuit.com", "<img src=\"(.*?uploads.*?)\""));
 		comics.add(new Comic("Nedroid", "http://www.nedroid.com", "<img src=\"(.*?nedroid.com/comics.*?)\""));
-		comics.add(new Comic("FLOABC", "http://www.forlackofabettercomic.com", "<img src=\"(.*?img/comic.*?)\""));
 		comics.add(new Comic("Sequential Art", "http://www.collectedcurios.com/sequentialart.php", "<img id=\"strip\" src=\"(.*?)\""));
 		comics.add(new Comic("Liberty Meadows", "http://www.creators.com/today-comics.html", "liberty-meadows.*<img src=\"(.*?)\""));
 		comics.add(new Comic("Whomp", "http://www.whompcomic.com", "<img src=\"(.*?whompcomic.com/comic.*?)\""));
@@ -43,7 +41,6 @@ public class ComicsRepository {
 		comics.add(createGoComicsComic("Scary Gary", "scarygary"));
 		comics.add(createGoComicsComic("Meaning of Lila", "meaningoflila"));
 		comics.add(createGoComicsComic("Daddy's Home", "daddyshome"));
-		comics.add(createGoComicsComic("Cafe con Leche", "cafeconleche"));
 		comics.add(createGoComicsComic("Calvin and Hobbes", "calvinandhobbes"));
 		Collections.sort(comics);
 		return comics;
