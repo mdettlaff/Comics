@@ -26,7 +26,7 @@ public class ComicsRepository {
 		comics.add(new Comic("PHD Comics", "http://phdcomics.com/comics.php", "comic src=(.*?comics/archive/phd.*?) "));
 		comics.add(new Comic("Penny Arcade", "http://www.penny-arcade.com/comic/", "<img src=\"(http://art.*?)\""));
 		comics.add(new Comic("Cyanide & Happiness", "http://explosm.net/comics/latest", ".*\"og:image\" content=\"(.*?/comics/.*?)\""));
-		comics.add(new Comic("SMBC", "http://www.smbc-comics.com/", "<img.*? src=\"(comics/.*?)\""));
+		comics.add(new Comic("SMBC", "http://www.smbc-comics.com/", "<img.*? src=\"(.*?comics/.*?)\""));
 		comics.add(new Comic("SMBC bonus", "http://www.smbc-comics.com/", "<img src=\'(.*?after.*?)\'>$"));
 		comics.add(new Comic("Dinosaur Comics", "http://qwantz.com/index.php", ".*<img src=\"(.*?)\" class=\"comic\""));
 		comics.add(new Comic("User Friendly", "http://userfriendly.org/", "<IMG ALT=\"Latest Strip\".*? SRC=\"(.*?)\""));
