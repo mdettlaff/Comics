@@ -48,7 +48,7 @@ public class ComicsRepository {
 	}
 
 	private Comic createGoComicsComic(String name, String urlPart) {
-		return new Comic(name, "http://gocomics.com/" + urlPart, "class=\"strip\".*?src=\"(.*?)\"");
+		return new Comic(name, "http://gocomics.com/" + urlPart, "\"og:image\" content=\"(.*?)\"");
 	}
 
 	public void clear() {
