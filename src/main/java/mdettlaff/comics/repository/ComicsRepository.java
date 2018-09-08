@@ -48,7 +48,7 @@ public class ComicsRepository {
 	}
 
 	private Comic createGoComicsComic(String name, String urlPart) {
-		return new Comic(name, "http://gocomics.com/" + urlPart, " src=\"(http://assets.amuniversal.com/.*?)\"");
+		return new Comic(name, "http://gocomics.com/" + urlPart, " src=\"(https://assets.amuniversal.com/.*?)\"");
 	}
 
 	public void clear() {

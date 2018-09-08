@@ -84,6 +84,8 @@ public class ComicsService {
 	private String getFullComicImageUrl(String comicImageUrl, String comicUrl) {
 		if (comicImageUrl.startsWith("http://")) {
 			return comicImageUrl;
+		} else if (comicImageUrl.startsWith("https://")) {
+			return "http" + comicImageUrl.substring("https".length());
 		} else {
 			String urlHost = comicUrl.replaceFirst("(http://.*?)/.*", "$1");
 			if (comicImageUrl.startsWith("/")) {
